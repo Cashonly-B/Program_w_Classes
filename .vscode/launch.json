@@ -4,6 +4,19 @@
     "configurations": [
 
         {
+            "name": "Schwoz",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-sandbox-Schwoz",
+            "program": "${workspaceFolder}/sandbox/Schwoz/bin/Debug/net8.0/Schwoz.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/sandbox/Schwoz",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+
+        {
             "name": "Sandbox Project",
             "type": "coreclr",
             "request": "launch",
