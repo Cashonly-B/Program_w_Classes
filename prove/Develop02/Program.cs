@@ -74,16 +74,19 @@ class JournalApp
     private void write()
     {
         // Choose a random prompt from the list
+        // random_Prompt
         Random randomPrompt = new Random();
         string prompt = prompts[randomPrompt.Next(prompts.Count)];
 
         // Print the line and record response
+        // get_entry
         Console.WriteLine($"\n{prompt}");
         Console.Write("Your entry: ");
         string response = Console.ReadLine();
         Entry newEntry = new Entry(prompt, response);
 
         // Add user's entry to the journal
+        // write_to_file
         journal.Add(newEntry);
         Console.WriteLine("Entry added successfully.");
     }
@@ -91,9 +94,11 @@ class JournalApp
     private void display()
     {
         // Displays all journal entries
+        // load_file
         Console.WriteLine("\n====================\nJournal Entries\n");
         foreach (var entry in journal)
         {
+            // display_file
             Console.WriteLine(entry);
             Console.WriteLine("====================");
         }
@@ -102,10 +107,12 @@ class JournalApp
     private void save()
     {
         // User types a file name and programs records the name
+        // get_filename
         Console.Write("Enter a filename to save (with .txt extension): ");
         string filename = Console.ReadLine();
  
         // Program saves the file
+        // load_file & write_file
         try
         {
             using (StreamWriter writer = new StreamWriter(filename))
@@ -132,6 +139,7 @@ class JournalApp
         string filename = Console.ReadLine();
  
         // Program loads the file from the filename
+        // get_filename
         try
         {
             journal.Clear();
