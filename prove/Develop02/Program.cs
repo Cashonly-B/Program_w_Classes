@@ -2,19 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
  
-class Entry
+class Entry(string prompt, string response)
 {
-    public string Prompt {get; set;}
-    public string Response {get; set;}
-    public DateTime Date {get; set;}
- 
-    public Entry(string prompt, string response)
-    {
-        Prompt = prompt;
-        Response = response;
-        Date = DateTime.Now;
-    }
- 
+    public string Prompt { get; set; } = prompt;
+    public string Response { get; set; } = response;
+    public DateTime Date { get; set; } = DateTime.Now;
+
     public override string ToString()
     {
         return $"Date: {Date}\nPrompt: {Prompt}\nResponse: {Response}\n";
@@ -142,10 +135,12 @@ class JournalApp
         // get_filename
         try
         {
+            // Clears the journal 
             journal.Clear();
  
             using (StreamReader reader = new StreamReader(filename))
             {
+                // Reads the file and loads it into vs code ready to display
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
