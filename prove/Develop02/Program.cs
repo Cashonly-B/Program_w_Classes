@@ -4,13 +4,13 @@ using System.IO;
  
 class Entry(string prompt, string response)
 {
-    public string Prompt { get; set; } = prompt;
-    public string Response { get; set; } = response;
-    public DateTime Date { get; set; } = DateTime.Now;
+    public string _prompt { get; set; } = prompt;
+    public string _response { get; set; } = response;
+    public DateTime _date { get; set; } = DateTime.Now;
 
     public override string ToString()
     {
-        return $"Date: {Date}\nPrompt: {Prompt}\nResponse: {Response}\n";
+        return $"Date: {_date}\nPrompt: {_prompt}\nResponse: {_response}\n";
     }
 }
  
@@ -25,8 +25,9 @@ class JournalApp
         "What was the strongest emotion I felt today?",
         "If I had one thing I could do over today, what would it be?"
     };
- 
-    public void displayMenu()
+    private string feelingResponse;
+
+    public void DisplayMenu()
     {
         while (true)
         {
@@ -43,16 +44,16 @@ class JournalApp
             switch (userChoice)
             {
                 case "1":
-                    write();
+                    Write();
                     break;
                 case "2":
-                    display();
+                    Display();
                     break;
                 case "3":
-                    save();
+                    Save();
                     break;
                 case "4":
-                    load();
+                    Load();
                     break;
                 case "5":
                     Console.WriteLine("Quiting...");
@@ -64,7 +65,7 @@ class JournalApp
         }
     }
  
-    private void write()
+    private void Write()
     {
         // Choose a random prompt from the list
         // random_Prompt
@@ -78,13 +79,17 @@ class JournalApp
         string response = Console.ReadLine();
         Entry newEntry = new(prompt, response);
 
+        // Extra 7% 
+        Console.Write("How are you feeling today?: ");
+        feelingResponse = Console.ReadLine();
+
         // Add user's entry to the journal
         // write_to_file
         journal.Add(newEntry);
         Console.WriteLine("Entry added successfully.");
     }
  
-    private void display()
+    private void Display()
     {
         // Displays all journal entries
         // load_file
@@ -92,12 +97,13 @@ class JournalApp
         foreach (var entry in journal)
         {
             // display_file
-            Console.WriteLine(entry);
-            Console.WriteLine("====================");
+            Console.Write(entry);
+            Console.WriteLine($"Feeling: {feelingResponse}");
+            Console.WriteLine("\n====================");
         }
     }
  
-    private void save()
+    private void Save()
     {
         // User types a file name and programs records the name
         // get_filename
@@ -112,7 +118,7 @@ class JournalApp
             {
                 foreach (var entry in journal)
                 {
-                    writer.WriteLine($"{entry.Date};{entry.Prompt};{entry.Response}");
+                    writer.WriteLine($"{entry._date};{entry._prompt};{entry._response}");
                 }
             }
  
@@ -125,7 +131,7 @@ class JournalApp
         }
     }
  
-    private void load()
+    private void Load()
     {
         // User types filename and program records response
         Console.Write("Enter a filename to load (with .txt extension): ");
@@ -150,7 +156,7 @@ class JournalApp
                     string response = parts[2];
                     Entry entry = new(prompt, response)
                     {
-                        Date = date
+                        _date = date
                     };
                     journal.Add(entry);
                 }
@@ -172,6 +178,6 @@ class JournalApp
     static void Main(string[] args)
     {
         JournalApp app = new();
-        app.displayMenu();
+        app.DisplayMenu();
     }
 }
