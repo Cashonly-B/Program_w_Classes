@@ -16,7 +16,7 @@ class Entry(string prompt, string response)
  
 class JournalApp
 {
-    private List<Entry> journal = new List<Entry>();
+    private List<Entry> journal = [];
     private List<string> prompts = new List<string>()
     {
         "Who was the most interesting person I interacted with today?",
@@ -68,7 +68,7 @@ class JournalApp
     {
         // Choose a random prompt from the list
         // random_Prompt
-        Random randomPrompt = new Random();
+        Random randomPrompt = new();
         string prompt = prompts[randomPrompt.Next(prompts.Count)];
 
         // Print the line and record response
@@ -76,7 +76,7 @@ class JournalApp
         Console.WriteLine($"\n{prompt}");
         Console.Write("Your entry: ");
         string response = Console.ReadLine();
-        Entry newEntry = new Entry(prompt, response);
+        Entry newEntry = new(prompt, response);
 
         // Add user's entry to the journal
         // write_to_file
@@ -148,8 +148,10 @@ class JournalApp
                     DateTime date = DateTime.Parse(parts[0]);
                     string prompt = parts[1];
                     string response = parts[2];
-                    Entry entry = new Entry(prompt, response);
-                    entry.Date = date;
+                    Entry entry = new(prompt, response)
+                    {
+                        Date = date
+                    };
                     journal.Add(entry);
                 }
             }
@@ -169,7 +171,7 @@ class JournalApp
 {
     static void Main(string[] args)
     {
-        JournalApp app = new JournalApp();
+        JournalApp app = new();
         app.displayMenu();
     }
 }
