@@ -49,7 +49,7 @@ class Scripture
         Console.WriteLine($"{_name}\n{Scripture}");
     }
 
-    // Get Length
+    // Get Length   
     public int GetLength(){
         return _length;
     }
