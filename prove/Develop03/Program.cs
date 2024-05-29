@@ -6,6 +6,7 @@ class Program
     {
         List<Scripture> scriptures = [];
         bool forward = false;
+        string user_type = "";
 
         Scripture reference1 = new();
         string firstTimothy4_9 = "For bodily exercise profiteth little: but godliness is profitable unto all things, having promise of the life that now is, and of that which is to come.";
@@ -27,10 +28,22 @@ class Program
         Scripture selected = scriptures[index];
         selected.Display();
         while(selected.GetLength() > 0){
-            Console.ReadKey();
+            // Console.ReadKey();
+            Console.SetCursorPosition(0,5);
+            Console.WriteLine("");
+            Console.Write("\nPress enter to continue OR type 'quit' to stop: ");
+            user_type = Console.ReadLine();
+            if(user_type == "quit" || user_type == "q"){ 
+                selected.Finish(); 
+                break;
+            }
+
             forward = selected.Advance();
             if(forward == false) { selected.Display(); }
-            else { selected.Finish(); }
+            else { 
+                selected.Finish();
+                break;
+            }
         }
     }
 }

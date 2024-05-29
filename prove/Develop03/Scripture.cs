@@ -85,8 +85,7 @@ class Scripture()
         Console.Clear();
         Console.SetCursorPosition(0,0);
         Console.WriteLine("Done!");
-        Console.WriteLine("CTRL + C to end program.");
-        Thread.Sleep(3000);
+        // Thread.Sleep(3000);
         return;
     }
 }
