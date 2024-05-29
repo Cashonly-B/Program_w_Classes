@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-class Scripture
+class Scripture()
 {
     private string _name;
     private int _length;
@@ -21,25 +21,52 @@ class Scripture
         }
     }
 
-    // Advance
-    public void Advance(){
+    // Advance every keystroke
+    public bool Advance(){
         var ran = new Random();
-        int index = ran.Next(_words.Count());
+        int number = ran.Next(3);
+        int index = 0;
+        int previous_index = 0;
+        bool empty = false;
+        bool all_empty = true;
 
-        if(_words[index]._empty == false){
-            _words[index].Empty();
-        }
-        else {
-            while(_words[index]._empty == true){
-                index = ran.Next(_words.Count());
+        do{ // Random Number
+            ran = new Random(); 
+            index = ran.Next(_words.Count());
+            if(index == previous_index){
+                while(index == previous_index){
+                    index = ran.Next(_words.Count());
+                }
             }
+            // If word is empty
+            empty = _words[index].GetEmpty();
+            if(empty == false){
+                _words[index].Empty();
+            } else{
+                foreach(Word word in _words){
+                    if(word.GetEmpty() == false){ 
+                        word.Empty();
+                        all_empty = false;
+                        break;
+                        }
+                }
+                if(all_empty == true){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            number -= 1;
+            previous_index = index;
+        }while(number > 0);
+        return false;
         }
-    }
     
     // Display
     public void Display(){
+        Console.Clear();
         Console.SetCursorPosition(0,0);
-        Console.WriteLine(_name);
+        // Console.WriteLine(_name);
         var builder = new StringBuilder();
         foreach(Word word in _words){
             builder.Append(word.GetWord());
@@ -52,6 +79,15 @@ class Scripture
     // Get Length   
     public int GetLength(){
         return _length;
+    }
+    // Once all words empty
+    public void Finish(){
+        Console.Clear();
+        Console.SetCursorPosition(0,0);
+        Console.WriteLine("Done!");
+        Console.WriteLine("CTRL + C to end program.");
+        Thread.Sleep(3000);
+        return;
     }
 }
 

@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 class Word {
@@ -24,5 +25,8 @@ class Word {
         }
         _word = builder.ToString();
         _empty = true;
+    }
+    public bool GetEmpty(){
+        return _empty;
     }
 }
