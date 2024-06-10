@@ -4,22 +4,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
-        
-        while (true)
-        {
-            int delay = 250;
-            // 🌕🌖🌗🌘🌑🌒🌓🌔
-            Console.Write("|\b");
-            Thread.Sleep(delay);
-            Console.Write("/\b");
-            Thread.Sleep(delay);
-            Console.Write("-\b");
-            Thread.Sleep(delay);
-            Console.Write("\\\b");
-            Thread.Sleep(delay);
+        int userChoice;
+        int duration;
+        string time = "";
 
-            Activity activity = new(1000, "Breathing", "Breathing in and out");
-        }
+        Console.WriteLine("1. Breathing Activity");
+        Console.WriteLine("2. Reflection Activity");
+        Console.WriteLine("3. Listing Activity");
+        Console.WriteLine("Choose an activity (number): ");
+        userChoice = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("How long would you like to do this activity? (in seconds): ");
+        duration = Convert.ToInt32(Console.ReadLine());
+    
+
+        Activity activity = new(1000, "Breathing", "Breathing in and out");
+    
     }
 }
