@@ -8,7 +8,7 @@ class BreathingActivity : Activity
     {
         int activitylength = _length;
         activitylength /=(_waittime * 2);
-        while(activitylength > 0);
+        while(activitylength > 0)
         {
             Console.WriteLine("\nBreath In\n");
             Loading();

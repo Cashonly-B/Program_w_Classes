@@ -6,7 +6,6 @@ class Program
     {
         int userChoice;
         int duration;
-        string time = "";
 
         Console.WriteLine("1. Breathing Activity");
         Console.WriteLine("2. Reflection Activity");
