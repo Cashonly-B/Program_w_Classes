@@ -1,23 +1,38 @@
+using System.Globalization;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+
 class Activity
 {
-    protected int _duration;
-    protected string _title;
-    protected string _description;
+    private int _duration;
+    private string _time;
+    private string _activitySelected;
+    private string _entryName;
+    
 
-    public Activity(int durParam, string titleParam, string descParam)
-    {
-        _duration = durParam;
-        _title = titleParam;
-        _description = descParam;
+    public Activity(string time = "",string entryName = "",string activitySelected = "", int duration = 0){
+        _time = time;
+        _entryName = entryName;
+        _activitySelected = activitySelected;
+        _duration = duration;
     }
 
     public void Start()
     {
-        Console.WriteLine($"Welcome to the {_title} activity. This activity will last {_duration} seconds");
+        Console.WriteLine($"Welcome to the {_activitySelected} activity. This activity will last {_duration} seconds");
         Thread.Sleep(1500);
     }
 
-    public void Loading()
+    public void End(){
+        Console.Clear();
+        Console.SetCursorPosition(0,0);
+        Console.WriteLine($"\nThank you for completing: {_entryName}\n");
+        Thread.Sleep(3000);
+        Console.Clear();
+        Console.SetCursorPosition(0,0);
+    }
+
+    public void Loading(int duration = 0)
     {
         int left,top;
         (left,top) = Console.GetCursorPosition();

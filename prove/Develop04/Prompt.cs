@@ -1,13 +1,13 @@
 class Prompt 
 {
     private string _prompt;
-    private string _repsonse;
-    
-    //Lists
-    private List<string> _reflectionPrompts;
-    private List<string> _reflectionQuestions;
-    private List<string> _listingPrompts;
-    
+    private string _question;
+
+    // Lists
+    private List<string> _reflectionPrompts = [""];
+    private List<string> _reflectionQuestions = [""];
+    private List<string> _listingPrompts = [""];
+
      public void SetLists(){
         //static set
         _reflectionPrompts.Add("Think of a time you stood up for someone else.");
@@ -53,12 +53,34 @@ class Prompt
                 _prompt = prompt;
                 return prompt;
             default:
-                return "NULL";
+                return "Returned null";
         }   
     }
 
-    public string GetRepsonse()
+    public string GetQuestion(string activity)
     {
-        return _repsonse;
+        int length;
+        int position;
+        string question;
+        var random = new Random();
+
+        switch(activity)
+        {
+            case "reflection":
+                length = _reflectionQuestions.Count();
+                position = random.Next(length);
+                question = _reflectionQuestions[position];
+                _question = question;
+                return question;
+            case "listing":
+                length = _listingPrompts.Count();
+                position = random.Next(length);
+                question = _listingPrompts[position];
+                _question = question;
+                return question;
+            default:
+                Console.WriteLine("Activity Not Found");
+                return "NULL";
+        }
     }
 }

@@ -1,23 +1,66 @@
 using System;
 
-class Program
+class MainProgram
 {
     static void Main(string[] args)
     {
         int userChoice;
         int duration;
+        DateTime time = DateTime.Now;
+        bool stopProgram = false;
 
-        Console.WriteLine("1. Breathing Activity");
-        Console.WriteLine("2. Reflection Activity");
-        Console.WriteLine("3. Listing Activity");
-        Console.WriteLine("Choose an activity (number): ");
-        userChoice = Convert.ToInt32(Console.ReadLine());
+        while(stopProgram == false)
+        {
+            Console.WriteLine("Select one of the following meditation activites.\n");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Reflection Activity");
+            Console.WriteLine("3. Listing Activity");
+            Console.WriteLine("4. Stop Program");
+            Console.Write("Choose an activity (number): ");
+            userChoice = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("How long would you like to do this activity? (in seconds): ");
-        duration = Convert.ToInt32(Console.ReadLine());
-    
+            //  111  222  333
+            if(userChoice == 1 || userChoice == 2 || userChoice == 3)
+            {
+                Console.Write("\nHow long would you like to do this activity? (in seconds): ");
+                duration = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\n");
 
-        Activity activity = new(1000, "Breathing", "Breathing in and out");
-    
+                if(userChoice == 1)
+                {
+                    BreathingActivity breathing = new(duration, time.ToString(), $"Breathing on {time}");
+                    breathing.Start();
+                    breathing.StartBreathing();
+                    breathing.End();
+                    break;
+                }
+                if(userChoice == 2)
+                {
+                    Reflection reflection = new(duration, time.ToString(), $"Reflection on {time}");
+                    reflection.Start();
+                    reflection.StartReflection();
+                    reflection.End();
+                    break;
+                }
+                if(userChoice == 3)
+                {
+                    Listing listing = new(duration, time.ToString(), $"Listing on {time}");
+                    listing.Start();
+                    listing.StartListing();
+                    listing.End();
+                    break;
+                }
+            }
+            
+            // 44444
+            if(userChoice >= 4)
+            {
+                Console.WriteLine("\nProgram Stopped");
+                break;
+            }
+        }
+        Console.Clear();
+        Console.SetCursorPosition(0,0);
+        Console.WriteLine("Thank you for meditating with the program. Hope this has helped you! Bye!");
     }
 }
