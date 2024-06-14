@@ -2,7 +2,7 @@ class Listing : Activity
 {
     private int _length;
     private List<string> _repsonses = [""];
-    private static string _self = "Listing";
+    private static string _self = "listing";
 
     public Listing(int length, string datetime, string entryName) : base(datetime,entryName,"Listing",length)
     {
@@ -50,6 +50,6 @@ class Listing : Activity
                 break;
               }
         }
-        Console.WriteLine($"\nRecored your responses");
+        Console.WriteLine($"\nRecorded your responses");
     }
 }

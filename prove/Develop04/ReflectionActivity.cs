@@ -4,7 +4,7 @@ class Reflection : Activity
 {
     private int _length;
     private int _timereflect = 5; // In seconds
-    private static string _self = "Reflection";
+    private static string _self = "reflection";
 
 
     public Reflection(int length, string time, string name)

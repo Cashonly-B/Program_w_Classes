@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 
 class MainProgram
 {
@@ -8,9 +9,14 @@ class MainProgram
         int duration;
         DateTime time = DateTime.Now;
         bool stopProgram = false;
+        int count = 0;
 
         while(stopProgram == false)
         {
+            if(count == 0)
+            {
+                Console.WriteLine("Hello, welcome to the Mindfullness activity. We hope you have a relaxing time.");
+            }
             Console.WriteLine("Select one of the following meditation activites.\n");
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Reflection Activity");
@@ -18,6 +24,7 @@ class MainProgram
             Console.WriteLine("4. Stop Program");
             Console.Write("Choose an activity (number): ");
             userChoice = Convert.ToInt32(Console.ReadLine());
+            count += 1;
 
             //  111  222  333
             if(userChoice == 1 || userChoice == 2 || userChoice == 3)
@@ -32,7 +39,6 @@ class MainProgram
                     breathing.Start();
                     breathing.StartBreathing();
                     breathing.End();
-                    break;
                 }
                 if(userChoice == 2)
                 {
@@ -40,7 +46,6 @@ class MainProgram
                     reflection.Start();
                     reflection.StartReflection();
                     reflection.End();
-                    break;
                 }
                 if(userChoice == 3)
                 {
@@ -48,7 +53,6 @@ class MainProgram
                     listing.Start();
                     listing.StartListing();
                     listing.End();
-                    break;
                 }
             }
             
@@ -61,6 +65,7 @@ class MainProgram
         }
         Console.Clear();
         Console.SetCursorPosition(0,0);
+        Console.WriteLine($"You have completed {count} meditation activies! Nice work!");
         Console.WriteLine("Thank you for meditating with the program. Hope this has helped you! Bye!");
     }
 }

@@ -25,6 +25,6 @@ class BreathingActivity : Activity
             Console.WriteLine("\nBreath Out\n");
             Loading(breatheOutTime);
             activityLength -= 1;
-        } while(_length > 0);
+        } while(activityLength > 0);
     }  
 }

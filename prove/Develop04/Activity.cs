@@ -36,12 +36,23 @@ class Activity
     {
         int left,top;
         (left,top) = Console.GetCursorPosition();
+        int delay = 250;
 
-        while(_duration > 0)
+        while(duration > 0)
         {
-            int delay = 250;
             // 🌕🌖🌗🌘🌑🌒🌓🌔
-
+            // while(length > 0){
+            //     Console.SetCursorPosition(left,top);
+            //     switch(index){
+            //         case 0: Console.Write("-");break;
+            //         case 1: Console.Write("\\");break;
+            //         case 2: Console.Write("|");break;
+            //         case 3: Console.Write("/");break;
+            //     }
+            //     if(index>=3){index = 0;}else{index +=1;}
+            //     length -=1;
+            //     Thread.Sleep(delay);
+            // }
             Console.SetCursorPosition(left,top);
             Console.Write("|\b");
             Thread.Sleep(delay);
@@ -51,6 +62,7 @@ class Activity
             Thread.Sleep(delay);
             Console.Write("\\\b");
             Thread.Sleep(delay);
+            duration -= 1;
         }
     }
 }

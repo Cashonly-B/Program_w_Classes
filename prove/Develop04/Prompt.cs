@@ -16,7 +16,7 @@ class Prompt
         _reflectionPrompts.Add("Think of a time when you did something truly selfless");
 
         _reflectionQuestions.Add("What was this experience meaningful to you?");
-        _reflectionQuestions.Add("Have yo ever done anything like this before?");
+        _reflectionQuestions.Add("Have you ever done anything like this before?");
         _reflectionQuestions.Add("How did you get started?");
         _reflectionQuestions.Add("How did you feel when it was completed?");
         _reflectionQuestions.Add("What made this time different than other times when you were not as successful?");
@@ -80,7 +80,7 @@ class Prompt
                 return question;
             default:
                 Console.WriteLine("Activity Not Found");
-                return "Null";
+                return "Returned Null";
         }
     }
 }
