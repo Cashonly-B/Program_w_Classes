@@ -80,7 +80,7 @@ class Prompt
                 return question;
             default:
                 Console.WriteLine("Activity Not Found");
-                return "NULL";
+                return "Null";
         }
     }
 }

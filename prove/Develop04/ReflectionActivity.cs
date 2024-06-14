@@ -10,7 +10,7 @@ class Reflection : Activity
     public Reflection(int length, string time, string name)
     : base(time, name, "Reflection", length)
     {
-        length = _length;
+        _length = length;
     }
 
     public void StartReflection()

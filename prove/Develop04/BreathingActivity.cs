@@ -8,7 +8,7 @@ class BreathingActivity : Activity
     public BreathingActivity(int length, string time, string entryName) 
     : base(time,entryName,"Breathing",length)
     {
-        int _length = length;
+        _length = length;
     }
 
     public void StartBreathing()
