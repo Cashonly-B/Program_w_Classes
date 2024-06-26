@@ -8,11 +8,11 @@ class Program
     {
         if(userStart == true)
         {
-            Console.WriteLine("Welcome to the Goal Setter!\n Please choose an option below:\n");
+            Console.WriteLine("Welcome to the Goal Setter!\nPlease choose an option below:\n");
         }
         else
         {
-            Console.WriteLine("Choose an option:\n");
+            Console.WriteLine("Choose an option to do:\n");
         }
         
         Console.WriteLine("1. Work on an existing goal");
@@ -20,13 +20,12 @@ class Program
         Console.WriteLine("3. Display all goals");
         Console.WriteLine("4. End Program");
 
-        Console.Write("\nPlease select option: ");
-        Console.Write("\n");
+        Console.Write("\nPlease choose an option: ");
         int userChoice = Convert.ToInt32(Console.ReadLine());
 
         if((userChoice % 1) != 0 || userChoice > 4 || userChoice < 1)
         {
-            Console.WriteLine("Invalid Option. Select a number 1-4.");
+            Console.WriteLine("Invalid Option. Select a number 1-4.\n");
             ShowMenu(userStart);
         }
         return userChoice;
@@ -158,18 +157,20 @@ class Program
     static void SaveGoals(){
         Console.Clear();
         Console.SetCursorPosition(0,0);
-        Console.WriteLine("Saving to file...");
-        Thread.Sleep(1000);
+        Console.Write("Saving to file...");
+        Thread.Sleep(500);
         Goal.Write();
+        Console.Write(" Saved successfully\nGoodbye!");
     }
 
     // LOAD
     static void LoadGoals(){
         Console.Clear();
         Console.SetCursorPosition(0,0);
-        Console.WriteLine("Loading from file...");
-        Thread.Sleep(1000);
+        Console.Write("Loading from file...");
+        Thread.Sleep(500);
         Goal.Read();
+        Console.Write("Successfully Loaded\nLoading Menu...");
     }
 
     static void Main(string[] args)
