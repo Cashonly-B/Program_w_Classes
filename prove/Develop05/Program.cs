@@ -21,6 +21,7 @@ class Program
         Console.WriteLine("4. End Program");
 
         Console.Write("\nPlease select option: ");
+        Console.Write("\n");
         int userChoice = Convert.ToInt32(Console.ReadLine());
 
         if((userChoice % 1) != 0 || userChoice > 4 || userChoice < 1)

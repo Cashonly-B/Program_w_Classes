@@ -51,7 +51,7 @@ class Goal{
     public static int DisplayExisting()
     {
         for(int i = 0 ; i < _goals.Count() ; i++){
-            if(_goals[i]._completed == false){Console.WriteLine($"{i+1}.\nName: {_goals[i]._name}\nType: {_goals[i]._type}\n");}
+            if(_goals[i]._completed == false){Console.WriteLine($"{i+1}\nName: {_goals[i]._name}\nType: {_goals[i]._type}\n");}
         }
         return _goals.Count();
     }
@@ -164,8 +164,8 @@ class Goal{
                 // Anything not null
                 bool exists = false;
                 bool complete = false;
-                string[] lineElem = line.Split(";");
-                if (Convert.ToInt32(lineElem[2]) == 1) 
+                string[] lineElement = line.Split(";");
+                if (Convert.ToInt32(lineElement[2]) == 1) 
                 { 
                     complete = true; 
                 }
@@ -174,33 +174,33 @@ class Goal{
                     complete = false; 
                 }
 
-                DateTime date = DateTime.Parse(lineElem[3]);
+                DateTime date = DateTime.Parse(lineElement[3]);
                 foreach(string name in names)
                     {
-                        if(lineElem[1].ToLower() == name.ToLower())
+                        if(lineElement[1].ToLower() == name.ToLower())
                         {
                             exists=true;
                         }
                     }
 
-                names.Add(lineElem[1]);
+                names.Add(lineElement[1]);
                 
                 if(exists == false)
                 {
-                    switch(lineElem[0]){
+                    switch(lineElement[0]){
                         case "Eternal":
-                            EternalGoal eternal = new(lineElem[1],complete,date,Convert.ToInt32(lineElem[4]));
-                            eternal._points = Convert.ToInt32(lineElem[5]);
-                            eternal.SetRunning(Convert.ToInt32(lineElem[5]));
+                            EternalGoal eternal = new(lineElement[1], complete, date, Convert.ToInt32(lineElement[4]));
+                            eternal._points = Convert.ToInt32(lineElement[5]);
+                            eternal.SetRunning(Convert.ToInt32(lineElement[5]));
                             break;
                         case "Simple":
-                            SimpleGoal simple = new(lineElem[1],complete,date,Convert.ToInt32(lineElem[4]));
-                            if(complete == true){simple._points = Convert.ToInt32(lineElem[4]);}
+                            SimpleGoal simple = new(lineElement[1], complete, date, Convert.ToInt32(lineElement[4]));
+                            if(complete == true){simple._points = Convert.ToInt32(lineElement[4]);}
                             break;
                         case "CheckList":
-                            CheckListGoal checkList = new(lineElem[1],complete,date,Convert.ToInt32(lineElem[4]),Convert.ToInt32(lineElem[5]),Convert.ToInt32(lineElem[6]));
-                            checkList._points = Convert.ToInt32(lineElem[7]);
-                            checkList.SetRunning(Convert.ToInt32(lineElem[7]));
+                            CheckListGoal checkList = new(lineElement[1], complete, date, Convert.ToInt32(lineElement[4]), Convert.ToInt32(lineElement[5]), Convert.ToInt32(lineElement[6]));
+                            checkList._points = Convert.ToInt32(lineElement[7]);
+                            checkList.SetRunning(Convert.ToInt32(lineElement[7]));
                             break;
                     }
                 }     

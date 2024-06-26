@@ -4,7 +4,7 @@ class CheckListGoal : Goal{
     private bool _completed = false;
     private int _total = 0;
     private int _reps;
-    private int _factor;
+    private int _points;
     private int _reward;
     private static string _self = "CheckList";
 
@@ -14,14 +14,14 @@ class CheckListGoal : Goal{
         _name = name;
         _completed = completed;
         _reps = reps;
-        _factor = points;
+        _points = points;
         _reward = reward;
         _checkListGoals.Add(this);
     }
     
     // Completed
     public int CompleteOnce(){
-        _total += _factor;
+        _total += _points;
         _reps -=1;
         UpdatePoints(_name,_total);
         return _reps;
@@ -86,11 +86,11 @@ class CheckListGoal : Goal{
     public void SetRunning(int runningTotal){_total = runningTotal;}
 
     // Returns
-    public int GetFactor(){return _factor;}
-    public int GetReward(){return _reward;}
-    public int GetReps(){return _reps;}
-    public int GetRunningTotal(){return _total;}
-    public bool GetComplete(){return _completed;}
+    public int GetFactor(){ return _points; }
+    public int GetReward(){ return _reward; }
+    public int GetReps(){ return _reps; }
+    public int GetRunningTotal(){ return _total; }
+    public bool GetComplete(){ return _completed;} 
 
 
     // Complete and Close

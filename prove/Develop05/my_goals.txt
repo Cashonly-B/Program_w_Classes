@@ -1,0 +1,4 @@
+Simple;Simple Goal;1;6/25/2024 7:41:32 PM;10
+Simple;wefwef;0;6/25/2024 7:55:24 PM;346
+Eternal;Eternal Goal;0;6/25/2024 7:41:42 PM;50;50
+CheckList;Checklist Goal;0;6/25/2024 7:42:21 PM;25;4;130;0
