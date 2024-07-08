@@ -18,7 +18,7 @@ public abstract class Event
             _date = date;
         }
 
-        public string RegDetails() { return $"Title: {_title} \nDescriptionL {_description} \nDate: {_date} \nTime: {_time} \nAddress: {Address}"; }
+        public string RegDetails() { return $"Title: {_title} \nDescription: {_description} \nDate: {_date.ToShortDateString()} \nTime: {_time} \nAddress: {Address}"; }
         public abstract string FullDetails(); // ChatGPT helped me write this line
-        public string GetDescription() { return $"Type: {GetType().Name} \nTitle: {_title} \nDate: {_date}"; }
+        public string GetDescription() { return $"Type: {GetType().Name} \nTitle: {_title} \nDate: {_date.ToShortDateString()}"; }
     }
