@@ -1,9 +1,18 @@
 using System;
 
-class Program
+public class Address 
 {
-    static void Main(string[] args)
+    private string _address;
+    private string _city;
+    private string _state;
+    private string _country;
+
+    public Address(string address, string city, string state, string country)
     {
-        Console.WriteLine("Hello Foundation3 World!");
+        _address = address;
+        _city = city;
+        _state = state;
+        _country = country;
     }
+    public override string ToString() { return $"{_address}, {_city}, {_state} {_country}"; }
 }
