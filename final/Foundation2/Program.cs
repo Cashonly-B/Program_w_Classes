@@ -44,10 +44,10 @@ public class Product
 {
     private string _name;
     private string _id;
-    private float _pricePerUnit;
+    private double _pricePerUnit;
     private int _quatity;
 
-    public Product(string _name, string _id, float _pricePerUnit, int _quatity)
+    public Product(string _name, string _id, double _pricePerUnit, int _quatity)
     {
         this._name = _name;
         this._id = _id;
@@ -57,7 +57,7 @@ public class Product
 
     public string GetName() { return _name; }
     public string ProductID() {return _id; }
-    public float TotalCost() { return _pricePerUnit * _quatity; }
+    public double TotalCost() { return _pricePerUnit * _quatity; }
 }
 
 // ========================================
@@ -78,14 +78,14 @@ public class Order
         _cart.Add(product);
     }
 
-    public float CalTotalCost()
+    public double CalTotalCost()
     {
-        float total = 0;
+        double total = 0;
         foreach (var product in _cart)
         {
             total += product.TotalCost();
         }
-        float shippingCost = _customer.IsDomesticUSA() ? 5 : 35; //ChatGPT Generated
+        double shippingCost = _customer.IsDomesticUSA() ? 5 : 35; //ChatGPT Generated
         total += shippingCost;
 
         return total;
@@ -115,16 +115,16 @@ public class Program
     public static void Main()
     {
         // Create
-        Address address1 = new Address("", "", "", "");
-        Address address2 = new Address("", "", "", "");
+        Address address1 = new Address("123 Chrome Street", "Swellview", "CA", "USA");
+        Address address2 = new Address("4775 Brick Wall Circle", "Cancun", "CN", "Mexico");
 
-        Customer customer1 = new Customer("", address1);
-        Customer customer2 = new Customer("", address2);
+        Customer customer1 = new Customer("Derek Henry", address1);
+        Customer customer2 = new Customer("Juan Jellyson", address2);
 
-        Product product1 = new Product("", "",  0, 0);
-        Product product2 = new Product("", "",  0, 0);
-        Product product3 = new Product("", "",  0, 0);
-        Product product4 = new Product("", "",  0, 0);
+        Product product1 = new Product("Table", "TN39DFN893NQ",  60.00, 2);
+        Product product2 = new Product("Monitor", "M34789VNW9X",  150.00, 1);
+        Product product3 = new Product("Backpack", "B10X0N20CVS",  40.00, 4);
+        Product product4 = new Product("Couch", "C21D08NV23",  350.00, 2);
 
         // Orders
         Order order1 = new Order(customer1);
