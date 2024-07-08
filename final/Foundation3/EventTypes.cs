@@ -14,7 +14,7 @@ public class Lecture : Event
         _capacity = capacity;
     }
 
-    public override string FullDetails() { return $"{RegDetails()} \nType: Lecture \nSpeaker: {_speaker} \nCapacity: {_capacity}"; }
+    public override string FullDetails() { return $"\nFull Deatils\n--------------- {RegDetails()} \nType: Lecture \nSpeaker: {_speaker} \nCapacity: {_capacity}"; }
 }
 
 // ==============  Reception  ==========================================
@@ -28,7 +28,7 @@ public class Reception : Event
         _email = email;
     }
 
-    public override string FullDetails() { return $"{RegDetails()} \nType: Reception \nRSVP Email: {_email}"; }
+    public override string FullDetails() { return $"\nFull Deatils\n--------------- {RegDetails()} \nType: Reception \nRSVP Email: {_email}"; }
 }
 
 // ==============  Outdoor  ==========================================
@@ -42,5 +42,5 @@ public class Outdoor : Event
         _weather = weather;
     }
 
-    public override string FullDetails() { return $"{RegDetails()} \nType: Outdoor Gathering \nWeather Forecast: {_weather}"; }
+    public override string FullDetails() { return $"\nFull Deatils\n--------------- {RegDetails()} \nType: Outdoor Gathering \nWeather Forecast: {_weather}"; }
 }
